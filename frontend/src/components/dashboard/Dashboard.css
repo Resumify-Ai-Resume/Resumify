@@ -1,0 +1,27 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .dashboard {
+    font-family: Arial, sans-serif; /* Or your chosen font */
+  }
+  
+  .toolbar {
+    background-color: #f0f0f0;  /* Word's light ribbon color */
+    padding: 10px; 
+    border-bottom: 1px solid #ddd;
+  } 
+  
+  .editor-area {
+    min-height: 500px; 
+    padding: 20px;
+    background-color: #fff; 
+  }
+  
+  .new-doc-button {
+    /* Style your button */
+  }
+  
