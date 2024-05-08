@@ -1,55 +1,171 @@
-/* Basic styles */
+/* Basic Styles */
 body {
   font-family: 'Arial', sans-serif;
-  margin: 0; /* Remove default body margin */
+  margin: 0;
 }
 
 .homepage-container {
-  max-width: 1000px;
+  max-width: 2000px; /* Adjust as needed */
   margin: 0 auto;
 }
+/* In your Homepage.css file */
+/* ... other styles ... */
 
 .hero {
-  display: flex;
+  display: flex; 
   align-items: center;
+  justify-content: center; /* Center the hero content horizontally */
+  min-height: 50vh; /* Ensure the hero section takes up some vertical space */
 }
 
-.hero-content {
-  text-align: center; /* Keep the content centered within its container */
-  padding: 40px;
-  width: 100%;         /* Fill full width on small screens */
-  max-width: 50%;      /* Limit width to half on larger screens */
+
+.hero-image {
+  flex: 1; /* Allow the image to grow to fill space */
+  min-width: 300px; /* Ensure a minimum width for the image */
 }
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: around; /* Distribute space around the elements */
+.hero-image img {
+  max-width: 100%; 
+  height: auto;
 }
 
-.primary-cta {
-  background-color: #2563eb; /* Vibrant blue */
-  hover:bg-blue-700;
-  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+/* About Section */
+.about {
+  text-align: center;
 }
 
-.features {
-  padding: 50px 0;
-}
-
+/* Features (adjust grid columns as needed) */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
-.feature-item {
+/* Steps, Testimonials, Co-founders - Style as needed */
+/* ... */
+
+/* Footer */
+.footer {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) { 
+  .hero {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+  }
+}
+/* In your Homepage.css file */
+/* ... other styles ... */
+/* In your Homepage.css file */
+.steps-grid {
+  display: flex; /* Use flexbox for easy alignment */
+}
+
+/* In your Homepage.css file */
+/* ... other styles ... */
+
+.step-item {
+  text-align:justify;
+  border: 1px solid #e0e0e0; 
+  padding: 20px; 
+  margin-right: 20px;
+  flex: 1;
+  border-radius: 10px; /* Add curved corners */
+  transition: box-shadow 0.2s ease-in-out; /* For smooth shadow effect */
+}
+
+.step-item:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Add a shadow on hover */
+}
+
+
+.step-item:last-child {
+  margin-right: 0; /* No margin for the last box */
+}
+
+.step-number {
+  /* ... your existing styles ... */
+}
+
+.fas.fa-arrow-right { /* Style the arrow */
+  font-size: 24px;
+  color: #333; 
+  margin-top: 10px; 
+}
+
+
+.step-item {
   text-align: center;
 }
 
-/* Font Awesome Icon */
-.icon-feature1:before { /* Update as needed */
-  content: "\f0e7"; /* Rocket icon */
+.step-number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  background-color: #e0e0e0; /* Adjust color if needed */
+  color: #333; /* Or your color scheme */
+  line-height: 40px; /* Vertically center the number */
+  font-size: 18px;
+  font-weight: bold;
+}
+/* In your Homepage.css file */
+/* ... other styles ... */
+
+.testimonials {
+  text-align: center;
 }
 
-/* Responsive adjustments and any additional styles */
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow testimonials to wrap */
+  justify-content: center;
+  gap: 30px;
+}
+
+.testimonial-item {
+  flex: 0 0 30%; /* Adjust width as needed */
+  max-width: 400px;
+}
+
+.quote-box {
+  background-color: #f8f8f8;
+  border-radius: 15px; /* Curved corners */
+  padding: 20px;
+  text-align: left;
+}
+
+.rating {
+  margin-top: 10px;
+}
+.author-bold { 
+  font-weight: bold; 
+}
+
+/* In your Homepage.css file */
+/* ... other styles ... */
+
+.cofounders {
+  text-align: center;
+}
+
+.cofounders-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  justify-content: center;
+  gap: 30px;
+}
+
+.cofounder-item {
+  flex: 0 0 30%; /* Adjust width as needed */
+  max-width: 300px;
+}
+.cofounder-item img {
+  border-radius: 50%; /* Creates a circular image */
+  width: 120px;   /* Adjust the size as desired */
+  height: 120px;  /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image fills the circle nicely */
+}
