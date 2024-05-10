@@ -29,7 +29,7 @@ const testimonials = [
     author: "Adam Bodar"
   },
   {
-    quote: "I have recommended Resumai because it save time and creates an ATS friendly resume",
+    quote: "I have recommended Resumify because it save time and creates an ATS friendly resume",
     author: "Dhruv Patel"
   },
   {
@@ -106,22 +106,22 @@ class Homepage extends Component {
             <div className="step-item">
               <div className="step-number">1</div>
               <h3 className="text-3xl font-medium mb-2 text-gray-800">Copy and Paste Resume Details</h3>
-              <p className="text-gray-600">Start by providing your full resume content.</p>
+              {/* <p className="text-gray-600">Start by providing your full resume content.</p> */}
             </div>
             <div className="step-item">
               <div className="step-number">2</div>
               <h3 className="text-3xl font-medium mb-2 text-gray-800">Paste Job Posting</h3>
-              <p className="text-gray-600">Input the job description you're applying to.</p>
+              {/* <p className="text-gray-600">Input the job description you're applying to.</p> */}
             </div>
             <div className="step-item">
               <div className="step-number">3</div>
               <h3 className="text-3xl font-medium mb-2 text-gray-800">Generate Resume Using AI</h3>
-              <p className="text-gray-600">Our AI tool will tailor your resume for the specific job.</p>
+              {/* <p className="text-gray-600">Our AI tool will tailor your resume for the specific job.</p> */}
             </div>
             <div className="step-item">
               <div className="step-number">4</div>
-              <h3 className="text-3xl font-medium mb-2 text-gray-800">Export in Different Formats</h3>
-              <p className="text-gray-600">Download your resume in various formats (PDF, Word, etc.).</p>
+              <h3 className="text-3xl font-medium mb-2 text-gray-800">Export in Different Formats and Layout</h3>
+              {/* <p className="text-gray-600">Download your resume in various formats.</p> */}
             </div>
           </div>
         </section>

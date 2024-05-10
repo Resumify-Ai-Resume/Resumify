@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import { auth } from '../../firebase.js'; // Import your Firebase authentication instance
+import { createUserWithEmailAndPassword } from 'firebase/auth'; // Import the sign-up function
+import { useNavigate } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import {NavLink} from 'react-router-dom'
 
 export default class SignUp extends Component {
     state = {
@@ -13,9 +18,29 @@ export default class SignUp extends Component {
             [e.target.id]: e.target.value
         })
     }
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(this.state)
+        const { email, password } = this.state;
+
+        try {
+            // Create user with Firebase
+            await createUserWithEmailAndPassword(auth, email, password);
+            <NavLink to ='/dashboard' className='brand-logo'> Resumify </NavLink> 
+            // navigate('/dashboard'); 
+            this.props.history.push('/dashboard');
+            this.setState({ email: '', password: '', firstName: '', lastName: '' });
+
+            console.log('User created successfully!');
+
+        } catch (error) {
+            // Handle errors (e.g., invalid email, weak password)
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(`Error creating user: ${errorMessage}`); 
+
+            console.error('Error creating user:', errorCode, errorMessage);
+            // Display error messages to the user using an alert, toast, or in-line message.
+        }
     }
 
     render() {
@@ -44,10 +69,19 @@ export default class SignUp extends Component {
                 <input type='password' id='password' onChange={this.handleChange}/>
             </div>
 
-            <div className='input-field'>
-                <button className='btn pink lighten-1 z-depth-0'> Sign Up </button>
-            </div>
+            {/* { isAuthenticated ? null : (
+                        <div className='input-field'>
+                            <NavLink to='/dashboard' className="primary-cta bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-md mt-6">Sign Up</NavLink> 
+                        </div>
+                    )} */}
+
+            {auth.currentUser && ( // Check if user is authenticated
+                <NavLink to='/dashboard' className='btn pink lighten-1 z-depth-0'>
+                    Sign Up 
+                </NavLink>
+            )}
         </form>
+
         
       </div>
     )
