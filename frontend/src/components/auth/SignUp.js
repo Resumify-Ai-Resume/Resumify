@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { auth } from '../../config/firebase.js'; // Import your Firebase authentication instance
-import { createUserWithEmailAndPassword } from 'firebase/auth'; // Import the sign-up function
+import { createUserWithEmailAndPassword, updateProfile  } from 'firebase/auth'; // Import the sign-up function
 import { useNavigate } from 'react-router-dom';
+
 
 class SignUp extends Component {
     state = {
@@ -22,6 +23,29 @@ class SignUp extends Component {
             [e.target.id]: e.target.value
         })
     }
+
+    registerUserToMongo = async (name, email, uid) => {
+
+      try {
+        const response = await fetch(`http://localhost:3001/signup`, {
+          method: "POST",
+          body: JSON.stringify({ name, email, uid }),
+          headers: { "Content-type": "application/json" },
+        });
+    
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+        
+        const data = await response.json(); // Get response data if needed
+        console.log("User added to MongoDB!", data); 
+    
+      } catch (err) {
+        console.error(err.message);
+        // Handle error, e.g., display error message to user
+      }
+    };
+
     handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password, firstName, lastName } = this.state;
@@ -38,7 +62,18 @@ class SignUp extends Component {
         if (Object.keys(errors).length === 0){
             try {
                 // Create user with Firebase
-                await createUserWithEmailAndPassword(auth, email, password);
+                const response =await createUserWithEmailAndPassword(auth, email, password);
+                const user = response.user;
+                await updateProfile(response.user, {
+                    displayName: firstName+lastName
+                });
+  
+                console.log(user);
+                await this.registerUserToMongo(
+                   user.displayName,
+                   user.email,
+                   user.uid,
+                )
                 this.props.navigate('/dashboard');
                 this.setState({ email: '', password: '', firstName: '', lastName: '' });
     
@@ -55,6 +90,9 @@ class SignUp extends Component {
             }
         }
     }
+
+
+
 
     render() {
 
