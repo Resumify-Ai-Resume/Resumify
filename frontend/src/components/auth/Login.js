@@ -3,6 +3,8 @@ import { auth } from '../../config/firebase.js';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +22,17 @@ export default function Login() {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // Fetch user data from MongoDB (optional)
+      const response = await fetch(`${baseUrl}/user/${userCredential.user.uid}`);
+      
+      if (response.ok) {
+          const userData = await response.json();
+          console.log('User data from MongoDB:', userData);
+          // You can use userData to update your application's state
+      } else {
+          console.error('Failed to fetch user data from MongoDB');
+      }
+      
       navigate('/dashboard');
       console.log('User logged in successfully:', userCredential.user);
     } catch (error) {  

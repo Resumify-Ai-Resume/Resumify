@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); // Import the cors package
+// const UserModel = require('./models/User') // TODO to be refactored
 
 const app = express();
 app.use(express.json());
 app.use(cors()); // Enable CORS for all routes
+
 
 // MongoDB connection (replace with your credentials if needed)
 const mongoURI = 'mongodb://localhost:27017/user'; // Assuming your database is named 'user'
@@ -19,7 +21,9 @@ mongoose.connect(mongoURI, {
     process.exit(1); // Exit the process if the connection fails
 });
 
-// User schema
+
+
+// User schema // TODO to be refactored 
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -47,6 +51,21 @@ app.post('/signup', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' }); 
     }
 });
+
+app.get('/user/:uid', async (req, res) => {
+    try {
+      const user = await User.findOne({ uid: req.params.uid }); // Find user by UID
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.json(user); // Send user as JSON response
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 
 // Start the server
 const PORT = process.env.PORT || 3001; // Use environment variable for port
