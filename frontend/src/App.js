@@ -6,6 +6,8 @@ import Homepage from './components/homePage/Homepage.js'
 import SignIn from './components/auth/SignIn.js';
 import SignUp from './components/auth/SignUp.js';
 
+// import backgroundImage from '../public/img/background.jpg';
+// import styles from './index.module.css'; 
 
 class App extends Component {
 

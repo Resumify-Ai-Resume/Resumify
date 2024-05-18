@@ -26,7 +26,7 @@ const testimonials = [
   },
   {
     quote: "Resumify has helped me a ton! It makes it easy to custom tailor for different job descriptions which gives an amazing edge in applications. More power to you.",
-    author: "Adam Bodar"
+    author: "Adam Badar"
   },
   {
     quote: "I have recommended Resumify because it save time and creates an ATS friendly resume",
@@ -157,19 +157,23 @@ class Homepage extends Component {
 
         {/* ----- Co-founders Section ----- */}
         <section className="cofounders py-20 container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">Founders</h2>
-        <div className="cofounders-grid">
-          <div className="cofounder-item">
-            <img src="/img/cofounder1.jpeg" alt="Yashank Bhola" className="rounded-full w-40 mx-auto mb-4"/>
-            <h3 className="text-xl font-medium mb-2 text-gray-800">Yashank Bhola</h3>
-            <p className="text-gray-600">x2 Software Engineer Nokia</p>
-            <p className="text-gray-600">Uoft Computer Science and Entrepreneurship</p>
+          <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">Founders</h2>
+          <div className="cofounders-grid">
+              <div className="cofounder-item">
+                  <img src="/img/cofounder1.jpeg" alt="Yashank Bhola" className="rounded-full w-40 mx-auto mb-4"/>
+                  <h3 className="text-xl font-medium mb-2 text-gray-800">Yashank Bhola</h3>
+                  <p className="text-gray-600">x2 Software Engineer Nokia</p>
+                  <p className="text-gray-600">Uoft Computer Science and Entrepreneurship</p>
+              </div>
+              <div className="cofounder-item">
+                  <img src="/img/cofounder1.jpeg" alt="Ji" className="rounded-full w-40 mx-auto mb-4"/>
+                  <h3 className="text-xl font-medium mb-2 text-gray-800">Ji Seon ping</h3>
+                  <p className="text-gray-600">Unemployed, Potential Senior Web Dev @ Amazon</p>
+                  <p className="text-gray-600">Uoft Computer Science and Entrepreneurship</p>
+              </div>
           </div>
-          {/* <div className="cofounder-item">
-            
-          </div> */}
-        </div>
       </section>
+
     
 
         {/* ----- Footer Section ----- */}

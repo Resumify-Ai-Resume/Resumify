@@ -41,8 +41,7 @@ body {
   gap: 30px;
 }
 
-/* Steps, Testimonials, Co-founders - Style as needed */
-/* ... */
+
 
 /* Footer */
 .footer {
@@ -69,7 +68,7 @@ body {
 
 .step-item {
   text-align:justify;
-  border: 1px solid #e0e0e0; 
+  border: 0.5px solid #3e3939; 
   padding: 20px; 
   margin-right: 20px;
   flex: 1;
@@ -148,24 +147,29 @@ body {
 /* In your Homepage.css file */
 /* ... other styles ... */
 
+/* ... your existing styles ... */
+
+/* Cofounders Section */
 .cofounders {
   text-align: center;
 }
 
 .cofounders-grid {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping if needed */
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal width columns */
+  gap: 30px; 
+  justify-content: center; /* Horizontally center items */
 }
 
+
 .cofounder-item {
-  flex: 0 0 30%; /* Adjust width as needed */
   max-width: 300px;
 }
+
 .cofounder-item img {
-  border-radius: 50%; /* Creates a circular image */
-  width: 120px;   /* Adjust the size as desired */
-  height: 120px;  /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure image fills the circle nicely */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }
+
