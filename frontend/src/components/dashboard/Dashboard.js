@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './Dashboard.css'; // Your custom CSS file
+import "./Dashboard.css"; // Your custom CSS file
 
 class Dashboard extends Component {
   render() {
     return (
-      <div className="dashboard"> 
+      <div className="dashboard">
         {/* Ribbon/Toolbar */}
         <header className="toolbar">
           {/* Toolbar sections, tabs, buttons would go here */}
@@ -13,7 +13,7 @@ class Dashboard extends Component {
         {/* Main Editing Area */}
         {/* <main className="editor-area" contentEditable="true">
           {/* You might structure this with more divs internally  */}
-        {/* </main> */} 
+        {/* </main> */}
 
         {/* New Document Creation */}
         <button className="new-doc-button"> + Create a new blank doc </button>

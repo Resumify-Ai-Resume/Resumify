@@ -1,36 +1,35 @@
 .custom-nav {
-    background-color: #ed596b;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-  }
-  
-  .container {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center; 
-  }
-  
-  .brand-logo {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #333333;
-    text-decoration: none;
-    margin-right: 20px; /* Example: Added margin */
+  background-color: #ed596b;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
 }
-  
-  .nav-links { 
-    display: flex; 
-    align-items: center;  
-  }
-  
-  /* You already likely have the styles for SignedInLinks and SignedOutLinks */
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
+  margin-right: 20px; /* Example: Added margin */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* You already likely have the styles for SignedInLinks and SignedOutLinks */
 .right {
   display: flex; /* Ensures flexbox behavior */
   align-items: center; /* Optional: vertical centering */
 }
 
 .right li {
-  margin-left: 20px; 
+  margin-left: 20px;
 }
-  

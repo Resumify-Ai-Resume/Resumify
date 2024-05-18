@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "resumify-1275c.appspot.com",
   messagingSenderId: "422528843690",
   appId: "1:422528843690:web:73a4060a0f93543feab5d3",
-  measurementId: "G-LRVXM8PD2K"
+  measurementId: "G-LRVXM8PD2K",
 };
 
 // Initialize Firebase
@@ -23,4 +23,4 @@ const auth = getAuth(app);
 
 const analytics = getAnalytics(app);
 
-export {auth , analytics};
+export { auth, analytics };

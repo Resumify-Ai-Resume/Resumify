@@ -1,41 +1,46 @@
-html{
+html {
   min-height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif; 
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 16px;
-  line-height: 1.6; 
+  line-height: 1.6;
   color: #333; /* Dark text on light background */
   background-color: #e8e9e4; /* Light gray background */
-  background: url('/public/img/background.jpg') no-repeat;
-  background-position:top;
+  background: url("/public/img/background.jpg") no-repeat;
+  background-position: top;
   background-size: cover;
   min-height: 100%;
 }
-form{
+form {
   padding: 20px;
   margin-top: 60px;
 }
-form button, form h5{
+form button,
+form h5 {
   margin: 20px 0;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]){
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
   border-color: #80956e;
   box-shadow: none;
 }
 
-
-h1, h2 {
+h1,
+h2 {
   font-weight: bold;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2em;
+}
 
 a {
   color: #007bff; /* Blue accent */
@@ -43,10 +48,10 @@ a {
 }
 
 a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

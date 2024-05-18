@@ -1,6 +1,6 @@
 /* Basic Styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
 }
 
@@ -12,12 +12,11 @@ body {
 /* ... other styles ... */
 
 .hero {
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center; /* Center the hero content horizontally */
   min-height: 50vh; /* Ensure the hero section takes up some vertical space */
 }
-
 
 .hero-image {
   flex: 1; /* Allow the image to grow to fill space */
@@ -25,7 +24,7 @@ body {
 }
 
 .hero-image img {
-  max-width: 100%; 
+  max-width: 100%;
   height: auto;
 }
 
@@ -41,8 +40,6 @@ body {
   gap: 30px;
 }
 
-
-
 /* Footer */
 .footer {
   text-align: center;
@@ -51,7 +48,7 @@ body {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   .hero {
     flex-direction: column; /* Stack content vertically on smaller screens */
   }
@@ -67,9 +64,9 @@ body {
 /* ... other styles ... */
 
 .step-item {
-  text-align:justify;
-  border: 0.5px solid #3e3939; 
-  padding: 20px; 
+  text-align: justify;
+  border: 0.5px solid #3e3939;
+  padding: 20px;
   margin-right: 20px;
   flex: 1;
   border-radius: 10px; /* Add curved corners */
@@ -80,7 +77,6 @@ body {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Add a shadow on hover */
 }
 
-
 .step-item:last-child {
   margin-right: 0; /* No margin for the last box */
 }
@@ -89,12 +85,12 @@ body {
   /* ... your existing styles ... */
 }
 
-.fas.fa-arrow-right { /* Style the arrow */
+.fas.fa-arrow-right {
+  /* Style the arrow */
   font-size: 24px;
-  color: #333; 
-  margin-top: 10px; 
+  color: #333;
+  margin-top: 10px;
 }
-
 
 .step-item {
   text-align: center;
@@ -104,7 +100,7 @@ body {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background-color: #e0e0e0; /* Adjust color if needed */
   color: #333; /* Or your color scheme */
   line-height: 40px; /* Vertically center the number */
@@ -140,8 +136,8 @@ body {
 .rating {
   margin-top: 10px;
 }
-.author-bold { 
-  font-weight: bold; 
+.author-bold {
+  font-weight: bold;
 }
 
 /* In your Homepage.css file */
@@ -157,10 +153,9 @@ body {
 .cofounders-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal width columns */
-  gap: 30px; 
+  gap: 30px;
   justify-content: center; /* Horizontally center items */
 }
-
 
 .cofounder-item {
   max-width: 300px;
@@ -172,4 +167,3 @@ body {
   height: 120px;
   object-fit: cover;
 }
-
