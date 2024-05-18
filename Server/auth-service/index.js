@@ -50,6 +50,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// for Login
 app.get("/user/:uid", async (req, res) => {
   try {
     const user = await User.findOne({ uid: req.params.uid }); // Find user by UID

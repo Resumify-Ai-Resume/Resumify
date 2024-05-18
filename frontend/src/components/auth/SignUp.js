@@ -71,7 +71,9 @@ class SignUp extends Component {
         });
 
         console.log(user);
+        // Registering to Mongo as well
         await this.registerUserToMongo(user.displayName, user.email, user.uid);
+        
         this.props.navigate("/dashboard");
         this.setState({ email: "", password: "", firstName: "", lastName: "" });
 
