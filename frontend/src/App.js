@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar.js'
 import Dashboard from './components/dashboard/Dashboard.js'
 import Homepage from './components/homePage/Homepage.js'
-import SignIn from './components/auth/SignIn.js';
+import Login from './components/auth/Login.js';
 import SignUp from './components/auth/SignUp.js';
 
 // import backgroundImage from '../public/img/background.jpg';
@@ -18,7 +18,7 @@ class App extends Component {
           <Navbar />
           <Routes>
             <Route exact path='/' Component={Homepage}/>
-            <Route exact path='/signin' Component={SignIn}/>
+            <Route exact path='/login' Component={Login}/>
             <Route exact path='/signup' Component={SignUp}/>
             <Route exact path='/dashboard' Component={Dashboard}/>
           </Routes>
