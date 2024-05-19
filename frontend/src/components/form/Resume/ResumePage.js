@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
 
 function ResumePage() {
     const location = useLocation();
@@ -13,7 +12,7 @@ function ResumePage() {
             try {
                 console.log('Final Data:', finalData);  // finalData 로그 출력
 
-                const response = await fetch('https://api.openai.com/v1/completions', {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -21,9 +20,7 @@ function ResumePage() {
                     },
                     body: JSON.stringify({
                         model: 'gpt-3.5-turbo',
-                        prompt: generatePrompt(finalData),
-                        max_tokens: 1500,
-                        temperature: 0.5
+                        messages: [{ "role": "system", "content": "Generate a resume" }, { "role": "user", "content": generatePrompt(finalData) }]
                     })
                 });
 
@@ -33,7 +30,7 @@ function ResumePage() {
 
                 const data = await response.json();
                 console.log('API Response:', data);  // API 응답 로그 출력
-                setResumeHtml(data.choices[0].text);
+                setResumeHtml(data.choices[0].message.content);
             } catch (error) {
                 console.error('Error fetching the resume HTML:', error);
             }
@@ -76,10 +73,13 @@ function ResumePage() {
 
     const downloadPDF = () => {
         const doc = new jsPDF();
-        doc.fromHTML(resumeHtml, 15, 15, {
-            width: 170
+        doc.html(document.querySelector('.container'), {
+            callback: function (doc) {
+                doc.save('resume.pdf');
+            },
+            x: 10,
+            y: 10
         });
-        doc.save('resume.pdf');
     };
 
     return (
