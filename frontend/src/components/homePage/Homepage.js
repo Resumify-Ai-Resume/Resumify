@@ -209,7 +209,7 @@ class Homepage extends Component {
         </section>
 
         {/* ----- Co-founders Section ----- */}
-        <section className="cofounders py-20 container mx-auto">
+        {/* <section className="cofounders py-20 container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">
             Founders
           </h2>
@@ -245,7 +245,7 @@ class Homepage extends Component {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ----- Footer Section ----- */}
         <footer className="footer">

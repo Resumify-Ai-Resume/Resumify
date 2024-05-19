@@ -1,25 +1,16 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import "./Dashboard.css"; // Your custom CSS file
 
 class Dashboard extends Component {
-  render() {
-    return (
-      <div className="dashboard">
-        {/* Ribbon/Toolbar */}
-        <header className="toolbar">
-          {/* Toolbar sections, tabs, buttons would go here */}
-        </header>
-
-        {/* Main Editing Area */}
-        {/* <main className="editor-area" contentEditable="true">
-          {/* You might structure this with more divs internally  */}
-        {/* </main> */}
-
-        {/* New Document Creation */}
-        <button className="new-doc-button"> + Create a new blank doc </button>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='container'>
+                <h1>Dashboard</h1>
+                <Link to="/form/general" className="btn">Create New Resume</Link>
+            </div>
+        );
+    }
 }
 
 export default Dashboard;
