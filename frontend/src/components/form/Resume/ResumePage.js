@@ -1,14 +1,46 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import jsPDF from 'jspdf';
-import '../../../styles/ResumePage.css'; // 가정한 CSS 경로
+import html2canvas from 'html2canvas';
+import '../../../styles/ResumePage.css'; // CSS 파일 경로
 
 function ResumePage() {
     const location = useLocation();
-    const finalData = location.state?.finalData || {};
+    const { finalData } = location.state || {};
     const [resumeHtml, setResumeHtml] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchResumeHtml = async () => {
+            try {
+                console.log('Final Data:', finalData);  // finalData 로그 출력
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [{ "role": "system", "content": "Generate a resume" }, { "role": "user", "content": generatePrompt(finalData) }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('API Response:', data);  // API 응답 로그 출력
+                setResumeHtml(data.choices[0].message.content);
+            } catch (error) {
+                console.error('Error fetching the resume HTML:', error);
+            }
+        };
+
+        fetchResumeHtml();
+    }, [finalData]);
+
     const generatePrompt = useCallback((data) => {
         return `
             You are to generate a professional HTML resume based on the provided data${JSON.stringify(data)}, following the structure and style similar to Jake Gutierrez's LaTeX resume. The resume should fit on a single A4 page and be well-organized. Use inline CSS to ensure the resume is visually appealing. Here is the structure and data to follow:
@@ -134,70 +166,29 @@ function ResumePage() {
         `;
     }, []);
 
-    const fetchResumeHtml = useCallback(async (data) => {
-        setLoading(true);
-        setError('');
-        try {
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-                },
-                body: JSON.stringify({
-                    model: 'gpt-3.5-turbo',
-                    messages: [{ "role": "system", "content": "Generate a resume" }, { "role": "user", "content": generatePrompt(data) }]
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            setResumeHtml(result.choices[0].message.content);
-        } catch (error) {
-            console.error('Failed to fetch resume:', error);
-            setError('Failed to load resume. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        if (Object.keys(finalData).length) {
-            fetchResumeHtml(finalData);
-        } else {
-            setError('No resume data provided.');
-        }
-    }, [finalData, fetchResumeHtml]);
 
     const downloadPDF = () => {
-        const doc = new jsPDF({
-            orientation: 'portrait',
-            unit: 'mm',
-            format: 'a4'
-        });
-        doc.html(document.querySelector('.resume-container'), {
-            callback: function (doc) {
-                doc.save('resume.pdf');
-            },
-            x: 10,
-            y: 10,
-            width: 190
+        const input = document.querySelector('.resume-container');
+        html2canvas(input, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+            const imgProps = pdf.getImageProperties(imgData);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save('resume.pdf');
         });
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-
     return (
-        <div className="resume-container">
+        <div className='resume-container'>
             <h1>Resume</h1>
             <div dangerouslySetInnerHTML={{ __html: resumeHtml }} />
-            <div className="button-container">
-                <button onClick={downloadPDF} className="btn">Download PDF</button>
-            </div>
+            <button onClick={downloadPDF} className='btn'>Download PDF</button>
         </div>
     );
 }

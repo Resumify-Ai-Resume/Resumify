@@ -10,6 +10,7 @@
     "env-cmd": "^10.1.0",
     "firebase": "^10.11.1",
     "firebase-admin": "^12.1.0",
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "mongodb": "^6.6.2",
