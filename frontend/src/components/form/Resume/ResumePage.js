@@ -8,6 +8,7 @@ function ResumePage() {
     const location = useLocation();
     const { finalData } = location.state || {};
     const [resumeHtml, setResumeHtml] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchResumeHtml = async () => {
@@ -35,6 +36,8 @@ function ResumePage() {
                 setResumeHtml(data.choices[0].message.content);
             } catch (error) {
                 console.error('Error fetching the resume HTML:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -166,7 +169,6 @@ function ResumePage() {
         `;
     }, []);
 
-
     const downloadPDF = () => {
         const input = document.querySelector('.resume-container');
         html2canvas(input, { scale: 2 }).then(canvas => {
@@ -186,9 +188,15 @@ function ResumePage() {
 
     return (
         <div className='resume-container'>
-            <h1>Resume</h1>
-            <div dangerouslySetInnerHTML={{ __html: resumeHtml }} />
-            <button onClick={downloadPDF} className='btn'>Download PDF</button>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <>
+                    <h1>Resume</h1>
+                    <div dangerouslySetInnerHTML={{ __html: resumeHtml }} />
+                    <button onClick={downloadPDF} className='btn'>Download PDF</button>
+                </>
+            )}
         </div>
     );
 }
